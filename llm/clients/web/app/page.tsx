@@ -1,19 +1,42 @@
-"use client";
-import { useState } from "react";
-import { APP_NAME } from "@repo/contracts";
+'use client';
+
+import { useState } from 'react';
 
 export default function Home() {
-  const [result, setResult] = useState<string>("");
-  async function callApi() {
-    const res = await fetch("/api/hello");
+  const [input, setInput] = useState(
+    '用户注册时必须绑定手机号，密码至少8位'
+  );
+  const [result, setResult] = useState<any>(null);
+
+  async function handleSubmit() {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/requirement/extract`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ input }),
+      }
+    );
+
     const data = await res.json();
-    setResult(data.message);
+    setResult(data);
   }
+
   return (
-    <main style={{ padding: 24 }}>
-      <h1>{APP_NAME}</h1>
-      <button onClick={callApi}>调用 API</button>
-      <pre style={{ marginTop: 16 }}>{result}</pre>
+    <main>
+      <h1>Requirement Extract Demo</h1>
+
+      <textarea
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        rows={8}
+      />
+
+      <button onClick={handleSubmit}>提取</button>
+
+      <pre>{JSON.stringify(result, null, 2)}</pre>
     </main>
   );
 }
