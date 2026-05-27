@@ -35,7 +35,26 @@
       "Bash(findstr \":3001\")",
       "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 3001 -ErrorAction SilentlyContinue | Select-Object LocalPort, State, OwningProcess\")",
       "Bash(curl -s -X POST http://localhost:3001/api/langchain/invoke -H \"Content-Type: application/json\" -d \"{\\\\\"input\\\\\": \\\\\"用户注册时必须绑定手机号，密码至少8位\\\\\"}\")",
-      "Bash(curl -v -X POST http://localhost:3001/api/langchain/invoke -H \"Content-Type: application/json\" -d \"{\\\\\"input\\\\\": \\\\\"用户注册时必须绑定手机号，密码至少8位\\\\\"}\")"
+      "Bash(curl -v -X POST http://localhost:3001/api/langchain/invoke -H \"Content-Type: application/json\" -d \"{\\\\\"input\\\\\": \\\\\"用户注册时必须绑定手机号，密码至少8位\\\\\"}\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\15734\\\\Desktop\\\\agent\\\\llm\\\\services\\\\api\\\\workspace\\\\orders\\\\\" -ErrorAction SilentlyContinue; if \\(-not \\(Test-Path \"C:\\\\Users\\\\15734\\\\Desktop\\\\agent\\\\llm\\\\services\\\\api\\\\workspace\\\\orders\\\\\"\\)\\) { Write-Output \"ORDERS_DIR_MISSING\" })",
+      "PowerShell(New-Item -ItemType Directory -Path \"C:\\\\Users\\\\15734\\\\Desktop\\\\agent\\\\llm\\\\services\\\\api\\\\workspace\\\\orders\" -Force)",
+      "Bash(node -e \"const t = require\\('@huggingface/transformers'\\); console.log\\(Object.keys\\(t\\).filter\\(k => k.toLowerCase\\(\\).includes\\('env'\\)\\).join\\(', '\\)\\); console.log\\(t.env ? 'env found' : 'env not found'\\);\")",
+      "Bash(node -e ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --connect-timeout 10 \"https://hf-mirror.com/Xenova/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/embedding/store -H 'Content-Type: application/json' -d '{\"documents\":[{\"content\":\"7天无理由退货，商品需未拆封且不影响二次销售\",\"metadata\":{\"source\":\"return-policy\"}},{\"content\":\"退款将在审核通过后3个工作日内原路退回\",\"metadata\":{\"source\":\"refund-policy\"}},{\"content\":\"蓝牙耳机降噪问题属于质量投诉，可申请退货或换货\",\"metadata\":{\"source\":\"faq\"}}]}')",
+      "Bash(kill %1)",
+      "Bash(curl -v -X POST http://localhost:3000/api/embedding/store -H 'Content-Type: application/json' -d '{\"documents\":[{\"content\":\"7天无理由退货，商品需未拆封且不影响二次销售\",\"metadata\":{\"source\":\"return-policy\"}}]}')",
+      "Bash(wait)",
+      "Bash(bun src/main.ts)",
+      "Bash(curl -s -X POST http://localhost:3000/api/embedding/store -H 'Content-Type: application/json' -d '{\"documents\":[{\"content\":\"7天无理由退货\",\"metadata\":{\"source\":\"return-policy\"}}]}')",
+      "Bash(bun -e ' *)",
+      "Bash(curl -s --connect-timeout 10 -o /dev/null -w \"HTTP %{http_code}\\\\nSize: %{size_download}\\\\nURL: %{url_effective}\" \"https://hf-mirror.com/Xenova/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json\")",
+      "Bash(curl -sL --connect-timeout 10 -o /dev/null -w \"HTTP %{http_code}\\\\nContent-Length: %{size_download}\\\\nFinal URL: %{url_effective}\" \"https://hf-mirror.com/Xenova/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json\")",
+      "Bash(curl -sL --connect-timeout 10 -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-multilingual-MiniLM-L12-v2/2c4055b12046f11709e9df2c122e59ffbdc2f900/config.json?test=1\")",
+      "Bash(curl -sL --connect-timeout 10 --max-time 10 -o /dev/null -w \"HTTP %{http_code}\\\\nContent-Length: %{size_download}\\\\n\" \"https://huggingface.co/Xenova/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/onnx/model_quantized.onnx\")",
+      "Bash(curl -sL --connect-timeout 10 --max-time 30 \"https://huggingface.co/api/models/Xenova/paraphrase-multilingual-MiniLM-L12-v2\")",
+      "Bash(curl -sL --connect-timeout 10 --max-time 30 https://huggingface.co/Xenova/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json -o /tmp/hf_config.json)",
+      "Bash(curl -sL --connect-timeout 10 --max-time 60 https://huggingface.co/Xenova/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/tokenizer.json -o /tmp/hf_tokenizer.json)"
     ]
   }
 }

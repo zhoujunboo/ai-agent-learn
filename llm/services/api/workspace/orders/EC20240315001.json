@@ -1,0 +1,26 @@
+{
+  "orderId": "EC20240315001",
+  "status": "已发货",
+  "createTime": "2024-03-15 10:30:00",
+  "customer": {
+    "name": "张三",
+    "phone": "13800138001"
+  },
+  "items": [
+    {
+      "productId": "PROD-001",
+      "name": "无线蓝牙耳机",
+      "quantity": 1,
+      "price": 299.00
+    },
+    {
+      "productId": "PROD-002",
+      "name": "快充充电器",
+      "quantity": 2,
+      "price": 79.00
+    }
+  ],
+  "totalAmount": 457.00,
+  "shippingAddress": "广东省深圳市南山区科技园路1号",
+  "trackingNumber": "SF1234567890"
+}

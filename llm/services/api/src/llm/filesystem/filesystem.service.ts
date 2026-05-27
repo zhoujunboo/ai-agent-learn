@@ -38,6 +38,17 @@ export class FilesystemService {
     ];
 
     const firstResponse = await modelWithTools.invoke(messages);
+
+    // DeepSeek thinking 模式返回 reasoning_content，LangChain 序列化无法处理，
+    // 剥离后后续请求中 API 不再要求该字段
+    if (firstResponse.additional_kwargs?.reasoning_content) {
+      firstResponse.additional_kwargs = Object.fromEntries(
+        Object.entries(firstResponse.additional_kwargs).filter(
+          ([k]) => k !== 'reasoning_content',
+        ),
+      );
+    }
+
     messages.push(firstResponse);
 
     for (const toolCall of firstResponse.tool_calls ?? []) {
