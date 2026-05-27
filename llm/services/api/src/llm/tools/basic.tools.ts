@@ -1,8 +1,16 @@
-import { z } from 'zod';
 import { tool } from '@langchain/core/tools';
+import { z } from 'zod';
+
+export const checkConstraintValiditySchema = z.object({
+  constraint: z.string(),
+});
+
+export const lookupEntityDefinitionSchema = z.object({
+  entity: z.string(),
+});
 
 export const checkConstraintValidityTool = tool(
-  async ({ constraint }: { constraint: string }) => {
+  ({ constraint }) => {
     const passed = /必须|至少|不得|不能/.test(constraint);
     return {
       constraint,
@@ -13,14 +21,12 @@ export const checkConstraintValidityTool = tool(
   {
     name: 'check_constraint_validity',
     description: '校验一条约束是否属于明确约束表达',
-    schema: z.object({
-      constraint: z.string(),
-    }),
-  }
+    schema: checkConstraintValiditySchema,
+  },
 );
 
 export const lookupEntityDefinitionTool = tool(
-  async ({ entity }: { entity: string }) => {
+  ({ entity }) => {
     const map: Record<string, string> = {
       用户: '系统中的账号主体',
       手机号: '用于身份绑定与验证的联系字段',
@@ -35,8 +41,6 @@ export const lookupEntityDefinitionTool = tool(
   {
     name: 'lookup_entity_definition',
     description: '查询实体在业务中的定义说明',
-    schema: z.object({
-      entity: z.string(),
-    }),
-  }
+    schema: lookupEntityDefinitionSchema,
+  },
 );
