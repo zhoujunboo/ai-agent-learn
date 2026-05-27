@@ -4,10 +4,22 @@ import { LlmController } from './llm.controller';
 import { RequirementService } from './requirement.service';
 import { RunnableMemoryService } from './memory/runnable-memory.service';
 import { MemoryController } from './memory/memory.controller';
+import { FilesystemService } from './filesystem/filesystem.service';
+import { FilesystemController } from './filesystem/filesystem.controller';
 
 @Module({
-  providers: [LlmService, RequirementService, RunnableMemoryService],
-  controllers: [LlmController, MemoryController],
-  exports: [LlmService, RequirementService, RunnableMemoryService],
+  providers: [
+    LlmService,
+    RequirementService,
+    RunnableMemoryService,
+    FilesystemService,
+  ],
+  controllers: [LlmController, MemoryController, FilesystemController],
+  exports: [
+    LlmService,
+    RequirementService,
+    RunnableMemoryService,
+    FilesystemService,
+  ],
 })
 export class LlmModule {}

@@ -31,7 +31,11 @@
       "Bash(bun -e \"const { createRequire } = require\\('module'\\); const r = createRequire\\(import.meta.url\\); r\\('@langchain/openai/dist/converters/completions.cjs'\\); console.log\\('OK'\\)\")",
       "Bash(node -e \"const { createRequire } = require\\('module'\\); const r = createRequire\\('C:\\\\\\\\Users\\\\\\\\15734\\\\\\\\Desktop\\\\\\\\agent\\\\\\\\llm\\\\\\\\services\\\\\\\\api\\\\\\\\src\\\\\\\\llm\\\\\\\\model.factory.ts'\\); console.log\\(r.resolve\\('@langchain/openai/dist/converters/completions.cjs'\\)\\);\")",
       "PowerShell(bun --version 2>&1)",
-      "PowerShell(node -e \"const pkg = require\\('./node_modules/@langchain/openai/package.json'\\); console.log\\(JSON.stringify\\(pkg.exports, null, 2\\)\\);\" 2>&1)"
+      "PowerShell(node -e \"const pkg = require\\('./node_modules/@langchain/openai/package.json'\\); console.log\\(JSON.stringify\\(pkg.exports, null, 2\\)\\);\" 2>&1)",
+      "Bash(findstr \":3001\")",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 3001 -ErrorAction SilentlyContinue | Select-Object LocalPort, State, OwningProcess\")",
+      "Bash(curl -s -X POST http://localhost:3001/api/langchain/invoke -H \"Content-Type: application/json\" -d \"{\\\\\"input\\\\\": \\\\\"用户注册时必须绑定手机号，密码至少8位\\\\\"}\")",
+      "Bash(curl -v -X POST http://localhost:3001/api/langchain/invoke -H \"Content-Type: application/json\" -d \"{\\\\\"input\\\\\": \\\\\"用户注册时必须绑定手机号，密码至少8位\\\\\"}\")"
     ]
   }
 }
